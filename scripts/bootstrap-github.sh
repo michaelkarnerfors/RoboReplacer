@@ -91,7 +91,8 @@ The Maven skeleton, the CI workflow and the Swing + FlatLaf stack were set up (A
 - [ ] The CI workflow is green on Windows and Linux
 - [ ] Both CI jobs are required status checks in the branch ruleset
 - [ ] CodeQL code scanning (default setup) is enabled
-- [ ] The Maven wrapper is added (`mvn wrapper:wrapper`) and used by CI
+- [x] The Maven wrapper is added (`mvnw`, `mvnw.cmd`, pinned in `.mvn/wrapper/maven-wrapper.properties`)
+- [ ] CI runs through the wrapper (`./mvnw` and `mvnw.cmd`) and `mvnw` is committed with the executable bit (`git ls-files --stage mvnw` shows 100755)
 - [ ] The README build instructions are confirmed accurate
 EOF
 
