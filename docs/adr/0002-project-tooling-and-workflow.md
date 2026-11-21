@@ -1,6 +1,6 @@
 # ADR-0002: Use GitHub for project management, CI/CD and collaboration, with GitHub Flow and Kanban
 
-- **Status:** Accepted
+- **Status:** Accepted. The branching, merging and release flow is superseded by [ADR-0005](0005-dev-integration-branch-and-release-flow.md); the rest stands.
 - **Date:** 2026-11-21
 
 ## Context

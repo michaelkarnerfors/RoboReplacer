@@ -35,7 +35,7 @@ Work is tracked as GitHub issues, grouped into milestones that double as release
 
 ## Building from source
 
-You need JDK 25 and Maven 3.9 or newer.
+You need JDK 25 and Maven 3.8 or newer.
 
 ```
 mvn verify                                        # compile, test and package

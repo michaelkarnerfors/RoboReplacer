@@ -9,7 +9,7 @@
 
 ## Decision
 
-- **Build tool:** Maven (3.9 or newer).
+- **Build tool:** Maven (3.8 or newer; the build is verified with 3.8.7, CI uses the version on the runner).
 - **Java version:** Java 25, the current long-term-support release (September 2025). The installer will bundle a runtime (with `jpackage`), so end users do not need to install Java.
 - **User interface:** Swing with the FlatLaf look and feel (Apache-2.0 licensed).
 - **Tests:** JUnit Jupiter.
