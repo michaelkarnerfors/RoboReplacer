@@ -246,12 +246,22 @@ EOF
 
 issue "Release workflow: build and attach installers on tag" "$M4" "task,area: build" <<'EOF'
 ## Goal
-Pushing a version tag builds the installers in GitHub Actions and attaches them to the GitHub Release.
+Pushing a version tag on `main` builds the installers in GitHub Actions and attaches them to the GitHub Release.
 
 ## Done when
 - [ ] Tag push triggers the build, with artifacts attached to the release
 - [ ] Checksums are published alongside the artifacts
 - [ ] docs/process.md is updated to describe the release steps as they now are
+EOF
+
+issue "Publish test builds from dev to a rolling pre-release" "$M4" "task,area: build" <<'EOF'
+## Goal
+Finished work merged into `dev` can be tried by a tester without being a release (ADR-0005).
+
+## Done when
+- [ ] A successful build of `dev` updates a clearly marked pre-release (for example a rolling `dev-latest`) with the jar attached
+- [ ] That pre-release is never marked as the latest release, and shows which commit it was built from
+- [ ] Releases from `main` are unaffected, and docs/process.md explains where a tester finds the build
 EOF
 
 issue "Decide on code signing for Windows installers" "$M4" "task,area: build" <<'EOF'
@@ -273,4 +283,4 @@ A short guide for non-technical users: install, create a first rule, test it, pa
 EOF
 
 echo
-echo "Done. Next: create the Project board and apply the repository settings (docs/github-setup.md, steps 5 and 6)."
+echo "Done. Next: run scripts/configure-github-repo.sh for repository settings and branch protection, then create the Project board (docs/github-setup.md, steps 5 and 6)."

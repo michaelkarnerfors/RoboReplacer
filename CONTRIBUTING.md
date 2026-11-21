@@ -5,9 +5,9 @@ Thanks for your interest! This is a hobby project run when time permits, so repl
 ## The short version
 
 1. Pick or open an [issue](../../issues). For anything non-trivial, agree on the approach there before writing code.
-2. Branch from `main`: `feature/123-short-name`, `fix/123-short-name` or `docs/123-short-name`.
-3. Run `mvn verify` locally (JDK 25, Maven 3.9+), then open a pull request. Keep it focused and fill in the template.
-4. CI must be green. PRs are squash-merged, so **the PR title becomes the commit message** and must follow [Conventional Commits](https://www.conventionalcommits.org/): `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `build:`, `ci:`, `chore:`.
+2. Branch from `dev`: `feature/123-short-name`, `fix/123-short-name` or `docs/123-short-name`.
+3. Run `mvn verify` locally (JDK 25, Maven 3.8+), then open a pull request **into `dev`**. Keep it focused and fill in the template.
+4. CI must be green. PRs into `dev` are squash-merged, so **the PR title becomes the commit message** and must follow [Conventional Commits](https://www.conventionalcommits.org/): `feat:`, `fix:`, `docs:`, `refactor:`, `test:`, `build:`, `ci:`, `chore:`.
 
 The full workflow, board columns and definitions of ready and done are in [docs/process.md](docs/process.md).
 

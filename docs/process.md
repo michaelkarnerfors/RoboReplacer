@@ -6,7 +6,7 @@ A small team (currently one human and one AI collaborator) working at hobby pace
 
 - **GitHub is the single source of truth.** Issues track work, the Project board shows flow, milestones are releases, and `docs/` holds durable knowledge.
 - **Kanban, not sprints.** Work is pulled when time permits. A small work-in-progress limit keeps things finishing instead of piling up.
-- **`main` is always releasable.** Everything reaches it through a pull request with green CI.
+- **`dev` is always buildable, and `main` only ever holds releases.** Work reaches `dev` through pull requests with green CI. `main` only receives a deliberate release.
 
 ## The board
 
@@ -23,7 +23,7 @@ A GitHub Project named *RoboReplacer*, with a **Status** field:
   - Acceptance criteria are met and CI is green.
   - Tests cover the behaviour. Docs and ADRs are updated where relevant.
   - The privacy checks in the PR template are ticked.
-  - The PR is merged to `main` and the issue is closed.
+  - The PR is merged into `dev` and the issue is closed. Releasing is a separate, later step.
 
 ## Work items and labels
 
@@ -36,25 +36,32 @@ A GitHub Project named *RoboReplacer*, with a **Status** field:
 
 Extra labels: `area: core`, `area: clipboard`, `area: ui`, `area: build`, `privacy`, `blocked`, `priority: high`, `priority: low`. Larger features are parent issues with sub-issues.
 
-## Milestones and releases
+## Milestones, test builds and releases
 
 A **milestone is a release**. Versions follow [SemVer](https://semver.org/); before 1.0 anything may change. Milestones have scope, not dates.
 
-To release:
+**Test builds.** Finished work merged into `dev` can be built and published as a pre-release for testers (see the test-build issue in v0.4.0). A test build is never a release.
+
+**Releasing** is a deliberate act:
 
 1. All milestone issues are closed, or consciously moved to a later milestone.
-2. Tag `vX.Y.Z` on `main` and create a GitHub Release. Use *Generate release notes*, which groups changes by the categories in `.github/release.yml`.
-3. Close the milestone.
+2. Set the version in `pom.xml` to the release version (drop `-SNAPSHOT`), through a pull request into `dev`.
+3. Open a pull request from `dev` into `main` titled `release: vX.Y.Z`, and merge it with a **merge commit** (not a squash).
+4. Tag `vX.Y.Z` on `main` and create a GitHub Release. Use *Generate release notes*, which groups changes by the categories in `.github/release.yml`.
+5. Close the milestone, and move `dev` to the next `-SNAPSHOT` version through a pull request.
 
 Once the release pipeline exists (v0.4.0), pushing the tag builds the installers and attaches them to the release automatically.
 
-## Branching and commits (GitHub Flow)
+## Branching and commits (`main` and `dev`)
 
-- `main` is protected. Changes arrive by pull request only, and are **squash-merged**.
-- Branch from `main`, short-lived: `feature/123-short-name`, `fix/123-short-name`, `docs/123-short-name`, where `123` is the issue number.
+[ADR-0005](adr/0005-dev-integration-branch-and-release-flow.md) describes the model and the reasons.
+
+- **`main`** holds released code only. **`dev`** is the integration branch: always buildable, and the repository's default branch. Both are protected. Changes arrive by pull request with green CI, and nothing is pushed to them directly.
+- Branch from `dev`, short-lived: `feature/123-short-name`, `fix/123-short-name`, `docs/123-short-name`, where `123` is the issue number.
+- Open the pull request **into `dev`** and **squash-merge** it.
 - The **PR title is the commit message**, in [Conventional Commits](https://www.conventionalcommits.org/) style: `feat: ...`, `fix: ...`, `docs: ...`, `refactor: ...`, `test: ...`, `build: ...`, `ci: ...`, `chore: ...`. Add `!` after the type for a breaking change.
 - Use draft PRs for early feedback. Keep PRs small and focused.
-- If a released version ever needs a patch while `main` has moved on, branch `release/x.y` from its tag. That is not expected before 1.0.
+- A hotfix for a released version branches from `main`, goes into `main` by pull request, and is then merged back into `dev`.
 
 ## Working with AI: the 4D framework
 
