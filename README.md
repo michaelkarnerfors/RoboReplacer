@@ -44,7 +44,7 @@ java -jar target/roboreplacer-0.1.0-SNAPSHOT.jar  # run the packaged application
 ./mvnw compile exec:java                          # or run straight from the sources
 ```
 
-A Maven you installed yourself (3.8 or newer) works too; the commands are then `mvn verify` and so on.
+A Maven you installed yourself (3.9 or newer) works too; the commands are then `./mvnw verify` and so on.
 
 The jar's file name follows the version in `pom.xml`.
 

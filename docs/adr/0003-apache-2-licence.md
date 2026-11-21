@@ -1,6 +1,6 @@
 # ADR-0003: License the project under Apache-2.0
 
-- **Status:** Proposed (to be accepted by the maintainer before the first public push)
+- **Status:** Accepted (confirmed by the maintainer on 2026-11-21; the LICENSE file is in the repository)
 - **Date:** 2026-11-21
 
 ## Context
