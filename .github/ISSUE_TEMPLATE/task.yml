@@ -1,0 +1,25 @@
+name: Task, spike or decision
+description: Technical work, an investigation, or a decision that needs to be made
+title: "[Task]: "
+labels: ["task"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What outcome do we want, and why does it matter?
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      description: A checklist of observable results. For a spike, state the question to answer and the time box.
+      placeholder: |
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes, options and constraints

@@ -1,0 +1,56 @@
+name: Feature or requirement
+description: Propose a new capability or a requirement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the outcome you want, not the implementation.
+        **Use synthetic data only.** Never paste real invoices, account numbers or names.
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      description: Who needs this, what do they want, and why?
+      placeholder: As an accounts payable assistant, I want ..., so that ...
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example (synthetic data)
+      description: What is copied, and what should be pasted?
+      placeholder: |
+        Copied:  1 234,56
+        Pasted:  1234.56
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How do we know this is done? A checklist works well.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: dropdown
+    id: privacy
+    attributes:
+      label: Privacy impact
+      options:
+        - None - clipboard handling is unchanged
+        - Touches clipboard content, stays local and unlogged
+        - Needs discussion (network, storage or logging involved)
+    validations:
+      required: true
+  - type: input
+    id: requirement-ids
+    attributes:
+      label: Related requirement IDs
+      description: Optional. Entries from docs/requirements/requirements.md.
+      placeholder: FR-003, NFR-002
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes and open questions

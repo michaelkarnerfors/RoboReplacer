@@ -1,0 +1,47 @@
+# Build output
+target/
+build/
+out/
+dist/
+*.class
+
+# Archives and binaries (wrapper jars are the exceptions below)
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+!gradle/wrapper/gradle-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# Gradle / Maven
+.gradle/
+.mvn/timing.properties
+pom.xml.versionsBackup
+
+# JVM crash and diagnostic files
+hs_err_pid*
+replay_pid*
+*.log
+
+# IDEs
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.factorypath
+.sts4-cache/
+.apt_generated/
+nbproject/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local secrets and settings
+.env
+*.local
+.claude/settings.local.json

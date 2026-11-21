@@ -1,0 +1,49 @@
+name: Bug report
+description: Something does not work as expected
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Use synthetic data only.** Never paste real clipboard content, logs containing it, or screenshots of real data.
+        Security or privacy problems: please use the private reporting route described in SECURITY.md instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the rule(s) involved and a synthetic example of the copied text.
+      placeholder: |
+        1. ...
+        2. ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: RoboReplacer version
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Operating system and Java version
+      placeholder: Windows 11, Java 21
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: RoboReplacer should never log clipboard content. If you see clipboard content in a log, that is a bug in itself, so redact it and say so.
+      render: text
