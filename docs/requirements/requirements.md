@@ -43,9 +43,9 @@ The target users move data between systems by copy and paste, for example accoun
 | NFR-004 | **Robust against bad rules.** A user-defined regular expression that backtracks catastrophically cannot hang the application; evaluation is time-limited and failure leaves the clipboard unchanged. | M |
 | NFR-005 | **Fast enough to be invisible.** Typical clipboard text (up to a few thousand lines) is processed in well under 100 ms. The figure is a target to validate. | S |
 | NFR-006 | **Fails safe.** If a rule fails or a write-back fails, the original clipboard content is left intact and the user is told. | M |
-| NFR-007 | **Platforms.** Windows 10 and 11 first. macOS and Linux later, if there is interest. *Assumption to confirm.* | M |
+| NFR-007 | **Platforms.** Windows 10 and 11 first. macOS and Linux later, if there is interest. *Confirmed by the maintainer, 2026-11-21.* | M |
 | NFR-008 | **Easy to install.** A single installer, bundled runtime and no administrator rights where possible. | S |
-| NFR-009 | **Internationalisation.** The UI is English first, with strings externalised so other languages can be added. *Assumption to confirm.* | S |
+| NFR-009 | **Internationalisation.** The UI is English first, with strings externalised so other languages can be added. *Confirmed by the maintainer, 2026-11-21.* | S |
 | NFR-010 | **Test data is synthetic.** No real financial or personal data in the repository, tests, issues or screenshots. | M |
 
 ## 5. Out of scope for now
@@ -57,4 +57,4 @@ Cloud sync, mobile apps, OCR or image processing, macro or scripting languages b
 - **OQ-1. Multi-format clipboards.** Spreadsheets put several formats on the clipboard at once (plain text, HTML, and more). If only the plain-text flavour is rewritten, a rich-text target may still paste the old content. Do we rewrite all text flavours, drop the rich ones, or let the user choose? Needs a spike on the target platform.
 - **OQ-2. Clipboard history tools.** Windows clipboard history and third-party managers will see both the original and the transformed content. Is that acceptable, and do we document it?
 - **OQ-3. Technology choices.** Resolved in [ADR-0004](../adr/0004-java-25-maven-swing-flatlaf.md): Maven, Java 25, Swing with FlatLaf. The clipboard integration approach stays open until the v0.2.0 spike.
-- **OQ-4. UI languages.** English only for now, or Swedish as well?
+- **OQ-4. UI languages.** Resolved: English first, with strings externalised (NFR-009). Further languages, Swedish included, are handled later as an internationalisation feature.
