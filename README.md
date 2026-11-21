@@ -35,13 +35,16 @@ Work is tracked as GitHub issues, grouped into milestones that double as release
 
 ## Building from source
 
-You need JDK 25 and Maven 3.8 or newer.
+You need JDK 25. You do not need to install Maven: the repository includes the Maven Wrapper, which downloads the pinned Maven version (see `.mvn/wrapper/maven-wrapper.properties`) on first use.
 
 ```
-mvn verify                                        # compile, test and package
+./mvnw verify                                     # compile, test and package (Linux, macOS)
+mvnw.cmd verify                                   # the same on Windows
 java -jar target/roboreplacer-0.1.0-SNAPSHOT.jar  # run the packaged application
-mvn compile exec:java                             # or run straight from the sources
+./mvnw compile exec:java                          # or run straight from the sources
 ```
+
+A Maven you installed yourself (3.8 or newer) works too; the commands are then `mvn verify` and so on.
 
 The jar's file name follows the version in `pom.xml`.
 

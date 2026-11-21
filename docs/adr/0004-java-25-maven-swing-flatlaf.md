@@ -9,7 +9,7 @@
 
 ## Decision
 
-- **Build tool:** Maven (3.8 or newer; the build is verified with 3.8.7, CI uses the version on the runner).
+- **Build tool:** Maven, run through the Maven Wrapper (`mvnw`, `mvnw.cmd`, only-script type). The Maven version is pinned in `.mvn/wrapper/maven-wrapper.properties` (3.9.16 when added) and used by both contributors and CI, so nobody needs a system Maven. The build also works with a self-installed Maven 3.8 or newer (verified with 3.8.7).
 - **Java version:** Java 25, the current long-term-support release (September 2025). The installer will bundle a runtime (with `jpackage`), so end users do not need to install Java.
 - **User interface:** Swing with the FlatLaf look and feel (Apache-2.0 licensed).
 - **Tests:** JUnit Jupiter.

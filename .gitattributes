@@ -2,6 +2,10 @@
 # so Windows developers and Linux CI agree.
 * text=auto eol=lf
 
+# Maven wrapper: the shell script and its properties must stay LF, or mvnw breaks on Linux and macOS
+mvnw text eol=lf
+.mvn/wrapper/maven-wrapper.properties text eol=lf
+
 # Windows scripts need CRLF
 *.bat text eol=crlf
 *.cmd text eol=crlf

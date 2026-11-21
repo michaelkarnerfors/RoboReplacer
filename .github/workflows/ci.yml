@@ -19,7 +19,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            mvnw: ./mvnw
+          - os: windows-latest
+            mvnw: .\mvnw.cmd
     steps:
       - uses: actions/checkout@v7
 
@@ -30,4 +34,4 @@ jobs:
           cache: maven
 
       - name: Build and test
-        run: mvn --batch-mode --no-transfer-progress verify
+        run: ${{ matrix.mvnw }} --batch-mode --no-transfer-progress --show-version verify
