@@ -33,6 +33,18 @@ An Excel workbook with Swedish regional settings, sheet `Spike`:
 
 For the plain-text cases: a Notepad document containing `1 234,56` where the space is typed with Alt+0160 (no-break space).
 
+For the Notepad formatting cases (T17 to T19) you need a Notepad with the 2025 formatting update: a toolbar with Bold, Italic, Link and list buttons. Formatting can be switched off in Notepad's settings, and a document can be shown rendered or as raw Markdown. Bold is stored as `**` around the text. Save this as `spike.md` for T17 (synthetic data):
+
+```
+# Receivables
+- Invoice A: 1 234,56
+- Invoice B: 5 678,90
+
+**Total: 6 913,46**
+```
+
+For T18 and T19 use the single row `1 234,56` from T1, with the no-break space.
+
 ## Hypotheses
 
 | ID | Hypothesis | Cases |
@@ -44,6 +56,7 @@ For the plain-text cases: a Notepad document containing `1 234,56` where the spa
 | H5 | The HTML flavour carries the Windows CF_HTML header (`Version:`, `StartHTML:` ...), or the JDK strips it. | T4, T11 |
 | H6 | Reading every flavour of a big range is slow, and shows how much re-reading the fan-out costs. | T10 |
 | H7 | Password managers mark their copies with exclusion flags that AWT does not show. | T15 |
+| H8 | Notepad stores formatting as Markdown characters (bold is `**`). Whether a copy carries those markers, rich flavours (HTML or RTF) as well, or only the rendered text is unknown, and may differ between the rendered and the raw view. | T17a, T17b, T18, T19 |
 
 ## Cases
 
@@ -65,6 +78,10 @@ For the plain-text cases: a Notepad document containing `1 234,56` where the spa
 | T14 | A region (Win+Shift+S) | Snipping tool | The image flavour and its size. |
 | T15 | A dummy password entry. Skip if you have no password manager. | KeePass, 1Password or similar | H7: anything unusual. |
 | T16 | Open Windows clipboard history (Win+V) and paste an older item | Windows | Does picking from history produce an event? (OQ-2) |
+| T17a | All of `spike.md` (Ctrl+A), in the rendered Markdown view | Notepad | H8: are the `#`, `-` and `**` markers in the text? Any flavours beyond plain text? |
+| T17b | The same, after switching to the raw Markdown view | Notepad | H8: does the view change what is copied? |
+| T18 | The row `1 234,56` with no formatting | Notepad | Baseline for T19. Compare with T1. |
+| T19 | The same row made bold (select it, Ctrl+B) | Notepad | H8: `**` in the text? New flavours compared with T18? Run T18, then T19, then T18 again (marker `T18b`). If the set of formats differs between two copies an event must arrive; if it is identical, none (H1 and its converse). |
 
 ## What happens next
 

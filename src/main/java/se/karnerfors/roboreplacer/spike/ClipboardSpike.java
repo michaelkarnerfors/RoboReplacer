@@ -80,14 +80,14 @@ public final class ClipboardSpike {
         output.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 
         JButton dumpNow = new JButton("Dump clipboard now");
-        dumpNow.addActionListener(event -> submit("manual", null, null));
+        dumpNow.addActionListener(_ -> submit("manual", null, null));
         JButton clear = new JButton("Clear view");
-        clear.addActionListener(event -> output.setText(""));
+        clear.addActionListener(_ -> output.setText(""));
         JTextField markerText = new JTextField("T1", 10);
         JButton mark = new JButton("Add marker");
         mark.setToolTipText("Writes a labelled line into the window and the log, to tell test cases apart");
-        mark.addActionListener(event -> publish("### " + markerText.getText() + "\n\n"));
-        markerText.addActionListener(event -> publish("### " + markerText.getText() + "\n\n"));
+        mark.addActionListener(_ -> publish("### " + markerText.getText() + "\n\n"));
+        markerText.addActionListener(_ -> publish("### " + markerText.getText() + "\n\n"));
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.LEFT));
         buttons.add(dumpNow);
         buttons.add(clear);
@@ -104,7 +104,7 @@ public final class ClipboardSpike {
 
         writeToFile(sessionHeader());
         updateStatus();
-        clipboard.addFlavorListener(event -> onFlavorsChanged());
+        clipboard.addFlavorListener(_ -> onFlavorsChanged());
         log.info("Listening to the system clipboard. Dumps are appended to " + LOG_FILE.toAbsolutePath());
     }
 
